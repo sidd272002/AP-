@@ -1,0 +1,150 @@
+practical 2A- Create an android app that demonstrates Activity Lifecycle
+ 
+activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Hello World!"
+ app:layout_constraintBottom_toBottomOf="parent"
+ app:layout_constraintEnd_toEndOf="parent"
+ app:layout_constraintStart_toStartOf="parent"
+ app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+ 
+MainActivity.java:
+package com.example.practical02a;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ Toast.makeText(getApplicationContext(), "onCreate Called", 
+Toast.LENGTH_LONG).show();
+ }
+ @Override
+ protected void onStart() {
+ super.onStart();
+ Toast.makeText(getApplicationContext(), "onStart Called", 
+Toast.LENGTH_LONG).show();
+ }
+ @Override
+ protected void onRestart(){
+ super.onRestart();
+ Toast.makeText(getApplicationContext(),"onRestart 
+Called,",Toast.LENGTH_LONG).show();
+ }
+ @Override
+ protected void onPause() {
+ super.onPause();
+ Toast.makeText(getApplicationContext(), "onPause Called", 
+Toast.LENGTH_LONG).show();
+ }
+ @Override
+ protected void onStop(){
+ super.onStop();
+ Toast.makeText(getApplicationContext(),"onStop 
+Called,",Toast.LENGTH_LONG).show();
+ }
+ @Override
+ protected void onResume() {
+ super.onResume();
+ Toast.makeText(getApplicationContext(), "onResume Called", 
+Toast.LENGTH_LONG).show();
+ }
+ @Override
+ protected void onDestroy(){
+ super.onDestroy();
+ Toast.makeText(getApplicationContext(),"onDestroy 
+Called,",Toast.LENGTH_LONG).show();
+ }
+}
+ 
+----------------------------------------practical 2B-Create an android app that demonstrates Instance State.
+ 
+activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <EditText
+ android:id="@+id/editTextTextPersonName"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_alignParentStart="false"
+ android:layout_centerInParent="true"
+ android:ems="10"
+ android:inputType="textPersonName"
+ android:paddingStart="16dp"
+ android:saveEnabled="false"
+ />
+ <Button
+ android:id="@+id/button2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_below="@id/editTextTextPersonName"
+ android:layout_alignParentStart="false"
+ android:layout_alignParentLeft="false"
+ android:layout_alignParentTop="false"
+ android:layout_alignParentEnd="false"
+ android:layout_alignParentRight="false"
+ android:layout_alignParentBottom="false"
+ android:layout_centerInParent="true"
+ android:text="Button" />
+</RelativeLayout>
+ 
+MainActivity.java:
+package com.example.practical02b;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import org.jetbrains.annotations.NonNls;
+public class MainActivity extends AppCompatActivity {
+ 
+ private static final String LOG_TAG="UIElementsPracticals";
+ @Override
+ protected void onCreate(Bundle savedInstanceState)
+ {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ Button button=(Button)findViewById(R.id.button2);
+ button.setOnClickListener(v -> {
+ EditText editText=(EditText) findViewById(R.id.editTextTextPersonName);
+ Log.i(LOG_TAG,editText.getText().toString());
+ });
+ }
+ @Override
+ protected void onSaveInstanceState(@NonNull Bundle outState)
+ {
+ super.onSaveInstanceState(outState);
+ Log.i(LOG_TAG,"in saved instance state");
+ EditText editText=(EditText) findViewById(R.id.editTextTextPersonName);
+ CharSequence writtenData=editText.getText();
+ outState.putCharSequence("MySavedData",writtenData);
+ }
+ @Override
+ protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState)
+ {
+ super.onRestoreInstanceState(savedInstanceState);
+ Log.i(LOG_TAG,"in restore instance state");
+ CharSequence storedData=savedInstanceState.getCharSequence("MySavedData");
+ EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
+ editText.setText(storedData);
+ }
+}
