@@ -1,0 +1,231 @@
+Practical 3- Create an android app with Interactive User Interface using different layouts.
+ 
+activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity"
+ android:orientation="vertical"
+ android:background="@drawable/background">
+ <TextView
+ android:id="@+id/topView1"
+ android:layout_width="match_parent"
+ android:layout_height="150dp"
+ android:layout_alignParentStart="true"
+ android:layout_alignParentTop="true"
+ android:text="@string/txtLogin"
+ android:textColor="@color/white"
+ android:textSize="40sp" />
+ <ImageView
+ android:id="@+id/imageView"
+ android:layout_width="60dp"
+ android:layout_height="45dp"
+ android:layout_marginLeft="370dp"
+ android:layout_marginTop="30dp"
+ app:srcCompat="@drawable/ic_baseline_person_24" />
+ <ImageView
+ android:id="@+id/imageView2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ app:srcCompat="@drawable/ic_baseline_email_24"
+ android:layout_marginTop="200dp"
+ android:layout_marginLeft="30dp"/>
+ <EditText
+ android:id="@+id/editTextTextPersonName"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="textEmailAddress"
+ android:hint="Email"
+ android:textColorHint="@color/white"
+ android:textColor="@color/white"
+ android:layout_marginTop="190dp"
+ android:layout_marginLeft="70dp"
+ android:text="" />
+ <ImageView
+ android:id="@+id/imageView3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ app:srcCompat="@drawable/ic_baseline_lock_24"
+ android:layout_marginTop="250dp"
+ android:layout_marginLeft="30dp"
+ />
+ <EditText
+ android:id="@+id/editTextTextPersonName2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="textPassword"
+ android:hint="Password"
+ android:textColorHint="@color/white"
+ android:textColor="@color/white"
+ android:layout_marginTop="240dp"
+ android:layout_marginLeft="70dp"
+ android:text=""/>
+ <Button
+ android:id="@+id/button"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Login"
+ android:textSize="18sp"
+ android:layout_marginTop="300dp"
+ android:layout_marginLeft="70dp"
+ android:backgroundTint="#009AFE"/>
+ <EditText
+ android:id="@+id/editTextTextPersonName3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="textPersonName"
+ android:text="FORGOT PASSWORD?"
+ android:layout_marginTop="350dp"
+ android:layout_marginLeft="70dp"
+ android:textColor="#009AFE"/>
+ <EditText
+ android:id="@+id/editTextTextPersonName4"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="textPersonName"
+ android:text="OR"
+ android:layout_marginTop="400dp"
+ android:layout_marginLeft="180dp"/>
+ <ImageView
+ android:id="@+id/imageView4"
+ android:layout_width="25dp"
+ android:layout_height="31dp"
+ android:layout_alignParentStart="true"
+ android:layout_alignParentBottom="true"
+ android:layout_marginStart="94dp"
+ android:layout_marginBottom="300dp"
+ app:srcCompat="@drawable/google" />
+ <ImageView
+ android:id="@+id/imageView5"
+ android:layout_width="25dp"
+ android:layout_height="31dp"
+ android:layout_alignParentEnd="true"
+ android:layout_alignParentBottom="true"
+ android:layout_marginEnd="78dp"
+ android:layout_marginBottom="300dp"
+ app:srcCompat="@drawable/fb" />
+ <EditText
+ android:id="@+id/editTextTextPersonName5"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="100dp"
+ android:layout_marginTop="500dp"
+ android:ems="10"
+ android:inputType="textPersonName"
+ android:text="New User? Register Here"
+ android:textColor="#009AFE" />
+</RelativeLayout
+
+-----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Frame Layout
+Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_ width="match_parent"
+android:layout_height="match_parent" android:orientation="vertical" android:padding="5dp">
+<TextView
+android:id="@+id/txtvw1"
+android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="100dp" android:layout_marginTop="10dp" android:background="#286F24" android:padding="10dp" android:text="Login Details" android:textColor="#FFFFFF" android:textSize="20sp" />
+<EditText android:id="@+id/editText1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_marginTop="80dp" android:background="#ECEEE8" android:hint="Enter your email" android:padding="10dp" />
+<EditText android:id="@+id/editText2" android:layout_width="match_parent" android:layout_height="wrap_content" 
+android:layout_centerHorizontal="true" android:layout_marginTop="150dp" 
+android:background="#ECEEE8" android:hint="Enter password"
+
+
+android:layout_height="match_parent" android:orientation="vertical" android:padding="5dp">
+<TextView android:id="@+id/txtvw1"
+android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="100dp" android:layout_marginTop="10dp" android:background="#286F24" android:padding="10dp" android:text="Login Details" android:textColor="#FFFFFF" android:textSize="20sp" />
+<EditText android:id="@+id/editText1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_marginTop="80dp" android:background="#ECEEE8" android:hint="Enter your email" android:padding="10dp" />
+<EditText android:id="@+id/editText2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_marginTop="150dp" android:background="#ECEEE8" android:hint="Enter password"
+android:padding="10dp" />
+
+<Button android:id="@+id/btn1"
+android:layout_width="wrap_content"
+
+
+ android:layout_height="wrap_content" android:layout_marginLeft="110dp" android:layout_marginTop="240dp" android:text="Submit" />
+</FrameLayout>
+
+-----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Table Layout
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent"
+android:layout_height="fill_parent">
+<TableRow android:layout_width="fill_parent"
+     android:layout_height="fill_parent">
+<TextClock android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/textClock" android:layout_column="2" />
+</TableRow>
+<TableRow>
+<TextView android:text="First Name" android:textSize="20dp"
+android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_column="1" />
+<EditText android:width="200px"
+android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</TableRow>
+<TableRow>
+<TextView android:text="Last Name" android:textSize="20dp"
+android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_column="1" />
+<EditText android:width="100px"
+android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</TableRow>
+<TableRow android:layout_width="fill_parent" android:layout_height="fill_parent">
+</TableRow>
+<TableRow android:layout_width="fill_parent" android:layout_height="fill_parent"/>
+     <TableRow android:layout_width="fill_parent" android:layout_height="fill_parent">
+<Button
+android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Submit" 
+
+
+
+android:textSize="30dp" android:id="@+id/button" android:layout_column="2" />
+</TableRow>
+</TableLayout>
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+
+ Linear Layout
+Vertical –
+Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical"> <!-- Horizontal Orientation set -->
+
+<!-- Child Views(In this case 2 Button) are here -->
+
+<Button
+android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button1" android:id="@+id/button" android:background="#358a32" />
+<Button
+android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Button2" android:id="@+id/button2" android:background="#0058b6" />
+</LinearLayout>
+
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+ Constraint layout
+Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="match_parent" tools:context=".MainActivity">
+<EditText android:id="@+id/editTextTextEmailAddress" android:layout_width="282dp" android:layout_height="69dp" android:ems="10"
+android:hint="Enter Email" android:inputType="textEmailAddress" android:textSize="24sp" android:textStyle="bold"
+app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.286" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.164" />
+<EditText android:id="@+id/editTextTextPassword" android:layout_width="277dp" android:layout_height="56dp" android:ems="10" android:inputType="textPassword" android:textColor="#191818" android:textSize="20sp" android:textStyle="bold"
+app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.276" app:layout_constraintStart_toStartOf="parent"
+
+
+
+app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.367" />
+<Button
+android:id="@+id/button" android:layout_width="227dp" android:layout_height="64dp" android:text="Submit" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.201" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.523" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
