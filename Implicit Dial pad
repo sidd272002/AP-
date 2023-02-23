@@ -1,0 +1,60 @@
+Practical 4B-Create an android app to open a Dial-pad with the help of implicit intent
+ 
+activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity"
+ android:orientation="horizontal">
+ <EditText
+ android:id="@+id/editTextPhone"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:ems="10"
+ android:inputType="phone"
+ android:layout_marginTop="50dp"
+ android:hint="Enter telephone number"/>
+ <Button
+ android:id="@+id/button2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="open dialpad"
+ android:layout_marginTop="100dp"
+ android:layout_marginLeft="120dp"
+ android:onClick="Call"/>
+</RelativeLayout>
+ 
+ActivityMain.java:
+package com.example.practical04b;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ }
+ public void Call(View v){
+ EditText e=(EditText) findViewById(R.id.editTextPhone);
+ Toast.makeText(this,"clicked",Toast.LENGTH_LONG).show();
+ Uri u= Uri.parse("tel:"+e.getText().toString());
+ Intent i=new Intent(Intent.ACTION_DIAL,u);
+ try{
+ startActivity(i);
+ }
+ catch (SecurityException s){
+ Toast.makeText(this,"An error occured",Toast.LENGTH_LONG).show();
+ }
+ }
+}
+ 
