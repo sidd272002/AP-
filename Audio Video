@@ -1,0 +1,116 @@
+practical 6a------: Create an android app for audio
+ 
+ activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity"
+ android:gravity="center"
+ android:orientation="vertical">
+ <Button
+ android:id="@+id/button"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="play"
+ android:onClick="play"/>
+ <Button
+ android:id="@+id/button2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="pause"
+ android:layout_below="@+id/button"
+ android:onClick="pause"/>
+ <Button
+ android:id="@+id/button3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="stop"
+ android:layout_below="@+id/button2"
+ android:onClick="stop"/>
+</RelativeLayout>
+ 
+----mainactivity.java
+package com.example.a8276practical06;
+import androidx.appcompat.app.AppCompatActivity;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+ MediaPlayer player;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ }
+ public void play(View view) {
+ player = MediaPlayer.create(this, R.raw.song);
+ player.start();
+ }
+ public void pause(View view) {
+ if(player!=null){
+ player.pause();
+ }
+ }
+ public void stop(View view) {
+ stopPlayer();
+ }
+ private void stopPlayer() {
+ if(player!=null){
+ player.release();
+ player=null;
+ Toast.makeText(getApplicationContext(), "MediaPlayer released",
+Toast.LENGTH_SHORT).show();
+ }
+ }
+}
+
+--------------------------------------------------------------------------------------
+practivcal 6b------Create an android app for video.
+ 
+--------------------------------------------------------------------------------------
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <FrameLayout
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:orientation="vertical">
+ <VideoView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:id="@+id/myVideo"/>
+ </FrameLayout>
+</LinearLayout>
+ 
+ 
+------main_activity.java
+package com.example.a8276practical06b;
+import androidx.appcompat.app.AppCompatActivity;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.MediaController;
+import android.widget.VideoView;
+public class MainActivity extends AppCompatActivity {
+ MediaController mediaController;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ VideoView videoView=findViewById(R.id.myVideo);
+ String videoPath="android.resource://"+getPackageName()+"/"+R.raw.video;
+ Uri uri= Uri.parse(videoPath);
+ videoView.setVideoURI(uri);
+ mediaController=new MediaController(this);
+ videoView.setMediaController(mediaController);
+ mediaController.setAnchorView(videoView);
+ }
+}
