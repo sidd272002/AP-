@@ -1,0 +1,210 @@
+1.OptionMenu:-
+MainActivity.java
+package com.example.pract7boptionmenu;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+}
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+MenuInflater inflater = getMenuInflater();
+inflater.inflate(R.menu.mymenu, menu);
+return super.onCreateOptionsMenu(menu);
+}
+@Override
+public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+switch (item.getItemId()) {
+case R.id.mnusetting:
+Toast.makeText(this, "Setting is selected", 
+Toast.LENGTH_SHORT).show();
+return true;
+case R.id.mnuprofile:
+Toast.makeText(this, "Profile is selected", 
+Toast.LENGTH_SHORT).show();
+;
+return true;
+case R.id.mnulogout:
+Toast.makeText(this, "You have been logged out ", 
+Toast.LENGTH_SHORT).show();
+;
+return true;
+default:
+return super.onOptionsItemSelected(item);
+}
+}
+}
+------------------------------------------------------------------------------------------------
+activity_main.xml:-
+<?xml version="1.0" encoding="utf-8"?>
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Hello World!"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+Mymenu.xml:-
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+android:id="@+id/mnusetting"
+android:icon="@drawable/ic_setting"
+android:title="setting" />
+<item
+android:id="@+id/mnuprofile"
+android:icon="@drawable/ic_profile"
+android:title="profile" />
+<item
+android:id="@+id/mnulogout"
+android:icon="@drawable/ic_logout"
+android:title="logout" />
+</menu>
+-----------------------------------------------------------------------------------------------------------------------------------
+Keyboard
+-----------------------------------------------------------------------------------------------------------------------------------
+Activity_main.xml
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/e
+s/android"
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context="com.example.android.keyboardsam
+ples.MainActivity"> <Button
+android:id="@+id/button_main"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+android:layout_alignParentRight="true"
+android:onClick="showText"
+android:text="@string/show" />
+<EditText
+android:id="@+id/editText_main"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:inputType="textPassword"
+android:layout_toLeftOf="@id/button_main"
+android:hint="@string/enter" />
+</RelativeLayout>
+----------------------------------------------------------------------------------------------------------------------------
+MainActivity.java
+Import ……
+public class MainActivity extends AppCompatActivity {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+}
+public void showText(View view) {
+EditText editText = (EditText) 
+findViewById(R.id.editText_main); if 
+(editText != null) {
+String showString = 
+editText.getText().toString(); 
+Toast.makeText(this, showString, 
+Toast.LENGTH_SHORT).show();
+} } }
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+5) Input Control
+Activity_main.xml
+------------------------------------------------------------------------------------------------------------------------
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context="com.example.android.phonenumbers
+pinner.MainActivity"> 
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="horizontal">
+<EditText
+android:id="@+id/editText_main"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:inputType="phone"
+android:hint="@string/hint_phonenumber" />
+<Spinner
+android:id="@+id/label_spinner"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content">
+</Spinner>
+<Button
+android:id="@+id/button_main"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:onClick="showText"
+android:text="@string/show_button" />
+</LinearLayout>
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_alignParentBottom="true">
+<TextView
+android:id="@+id/title_phonelabel"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="@string/phonenumber_label"/>
+<TextView
+android:id="@+id/text_phonelabel"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="@string/nothing_entered"/>
+</LinearLayout>
+</RelativeLayout>
+----------------------------------------------------------------------------------------------------
+MainActivity.java
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener { 
+private static final String TAG = MainActivity.class.getSimpleName();
+private String mSpinnerLabel = "";
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+Spinner spinner = (Spinner)findViewById(R.id.label_spinner); 
+if (spinner != null) {
+spinner.setOnItemSelectedListener(this);
+}
+ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.labels_array,android.R.layout.simple_spinner_item);
+adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+if (spinner != null) {
+spinner.setAdapter(adapter); 
+} }
+public void showText(View view) {
+EditText editText = (EditText)findViewById(R.id.editText_main); 
+if (editText != null) {
+String showString = (editText.getText().toString()+ " - " + mSpinnerLabel); Toast.makeText(this,showString, Toast.LENGTH_SHORT).show(); 
+TextView textView = (TextView)findViewById(R.id.text_phonelabel); 
+textView.setText(showString); } }
+@Override
+public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+mSpinnerLabel = adapterView.getItemAtPosition(i).toString(); 
+showText(view); }
+@Override
+public void onNothingSelected(AdapterView<?> adapterView) { 
+Log.d(TAG, getString(R.string.nothing_selected));
+} 
